@@ -1,10 +1,10 @@
 "use strict";
 
 let input = document.getElementById('input'); // input / output
-let numbers = document.querySelectorAll('.numbers div');
-let operators = document.querySelectorAll('.operators');
+let numbers = document.querySelectorAll('.numbers div'); // all numbers
+let operators = document.querySelectorAll('.operators'); // all operators
 let result = document.getElementById('result'); // btn equal
-let clear = document.getElementById('clear'); //btn clear
+let clear = document.getElementById('clear'); // btn clear
 let resultDisplayed = false;
 
 for (let i = 0; i < numbers.length; i++) {
@@ -41,7 +41,8 @@ for (let i = 0; i < operators.length; i++) {
         // if last character entered is an operator, replace it with the currently pressed one
         if (lastChar === "+" || lastChar === "-" || lastChar === "×" || lastChar === "÷") {
             let newString = currentString.substring(0, currentString.length - 1) + e.target.innerHTML;
-            input.innerHTML = newString;
+            //input.innerHTML += e.target.innerHTML;
+            input.innerHTML += newString;
         } else if (currentString.length == 0) {
             // if first key pressed is an opearator, don't do anything
             console.log("enter a number first");
@@ -55,10 +56,10 @@ for (let i = 0; i < operators.length; i++) {
     // on click of 'equal' btn
 result.addEventListener("click", function() {
 
-    //this is the string that we will be processing eg. -10+26+33-56*34/23
+    // this is the string that we will be processing eg. -10+26+33-56*34/23
     let inputString = input.innerHTML;
 
-    //forming an array of numbers. eg. for above string it will be: numbers = ["10", "26", "33", "56", "34", "23"]
+    // forming an array of numbers. eg. for above string it will be: numbers = ["10", "26", "33", "56", "34", "23"]
     let numbers = inputString.split(/\+|\-|\×|÷/g);
 
     // forming an array of operators. for above string it will be: operators = ["+", "+", "-", "*", "/"]
